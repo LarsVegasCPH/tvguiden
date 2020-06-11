@@ -2,7 +2,8 @@ from bs4 import BeautifulSoup as _bs
 import requests as _requests
 import datetime as _dt
 from datetime import timedelta
-from src import channel as tvshow
+#from src import tvshow as tvshow
+from . import tvshow
 
 _baseURL = "http://tvtid.tv2.dk"
 _programUrl = "https://tvtid.tv2.dk/program/{0}/{1}"
