@@ -1,4 +1,4 @@
-from src import tvguiden
+import tvguiden
 import requests
 
 def test_baseurl():
