@@ -13,25 +13,28 @@ import datetime as _dt
 from datetime import timedelta
 from datetime import datetime
 from typing import List
+from dataclasses import dataclass, field
 
 
+@dataclass(frozen=True)
 class Program:
-    def __init__(self, name: str, start: datetime, stop: datetime, program_id: str, content: str):
-        self.name = name
-        self.start = start
-        self.stop = stop
-        self.id = program_id
-        self.content = content
+    name: str
+    start: datetime
+    stop: datetime
+    program_id: str
+    content: str
+    duration: datetime = field(init=False) # This is computed in __post_init__
+
+    def __post_init__():
         self.duration = stop - start
 
     def __repr__(self):
         return self.name + " at " + f"{self.start.hour:02d}" + f":{self.stop.hour:02d}"
 
-
+@dataclass(frozen=True)
 class Channel:
-    def __init__(self, channelname: str, channel_id: str):
-        self.name = channelname
-        self.id = channel_id
+    name: str
+    channel_id: str
 
     def __repr__(self):
         return self.name.replace(" ", "_").replace("'", "")
